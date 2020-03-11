@@ -1,14 +1,43 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out"
 ];
+const newMenu = menuText => {
+  const menuItem = document.createElement("li");
+  menuItem.textContent = menuText;
 
+  return menuItem;
+};
+
+const header = document.querySelector(".header");
+
+const menu = document.createElement("div");
+menu.classList.add("menu");
+header.appendChild(menu);
+
+const menuList = document.createElement("ul");
+
+menu.appendChild(menuList);
+
+menuItems.forEach(currentItem => {
+  const menuItem = newMenu(currentItem);
+
+  menuList.appendChild(menuItem);
+});
+
+const menuButton = document.querySelector(".menu-button");
+
+const menuOpen = event => {
+  menu.classList.toggle("menu--open");
+};
+
+menuButton.addEventListener("click", menuOpen);
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
